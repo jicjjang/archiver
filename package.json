@@ -1,0 +1,49 @@
+{
+  "name": "achiever",
+  "version": "1.0.0",
+  "description": "Share saved data in your group.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack; electron electron.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "vue",
+    "vuex",
+    "firebase",
+    "travis-ci",
+    "semantic-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jicjjang/achiever.git"
+  },
+  "author": "june <jicjjang12@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jicjjang/achiever/issues"
+  },
+  "homepage": "https://github.com/jicjjang/achiever#readme",
+  "dependencies": {
+    "firebase": "^3.9.0",
+    "jquery": "^3.2.1",
+    "semantic-ui": "^2.2.10",
+    "vue": "^2.2.6",
+    "vuex": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "css-loader": "^0.28.0",
+    "electron-prebuilt": "^1.4.13",
+    "vue-hot-reload-api": "^2.1.0",
+    "vue-loader": "^12.0.0",
+    "vue-template-compiler": "^2.2.6",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}

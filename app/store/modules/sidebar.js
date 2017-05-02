@@ -10,9 +10,6 @@ export default {
     }
   },
   mutations: {
-    'INIT_SIDEBAR' (state, datas) {
-      state.sidebar = datas
-    },
     'SET_SIDEBAR' (state, data) {
       if (!state.sidebar) {
         state.sidebar = {}
@@ -24,11 +21,6 @@ export default {
     }
   },
   actions: {
-    initSidebar ({ commit }) {
-      Vue.http.get('data.json').then(res => {
-        commit('INIT_SIDEBAR', res.body.sidebar)
-      })
-    },
     setSidebar ({ commit }, data) {
       Vue.http.post(`data.json`, data).then(res => {
         commit('SET_SIDEBAR', {key: res.body.name, data})

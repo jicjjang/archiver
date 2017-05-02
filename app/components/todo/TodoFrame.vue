@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import TodoPanel from './TodoPanel.vue'
 import SidebarPanel from '../SidebarPanel.vue'
 
@@ -13,6 +15,11 @@ export default {
   components: {
     'appTodo': TodoPanel,
     'appSidebar': SidebarPanel
+  },
+  methods: {
+    ...mapActions([
+      'initTodo'
+    ])
   }
 }
 </script>

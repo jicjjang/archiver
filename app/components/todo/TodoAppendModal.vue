@@ -1,69 +1,85 @@
 <template>
-  <div id="bookmark-modal" class="ui modal">
+  <div id="todo-modal" class="ui modal">
     <i class="close icon"></i>
     <div class="header">
-      Add a new bookmark
+      Add a new todo
     </div>
     <div class="content">
-
       <form class="ui form">
         <div class="field">
-          <label>Bookmark Title</label>
-          <input v-model="bookmarkTitle" type="text" placeholder="Enter a title for your bookmark...">
+          <label>Todo Title</label>
+          <input v-model="todoTitle" type="text" placeholder="Enter a title for your todo...">
         </div>
         <div class="field">
-          <label>Bookmark URL</label>
-          <input v-model="bookmarkUrl" type="text" placeholder="Enter the URL for your bookmark...">
+          <label>Todo Contents</label>
+          <textarea v-model="todoContents" placeholder="Enter a Contents for your todo..."></textarea>
         </div>
         <div class="field">
-          <label>Bookmark category</label>
-          <select v-model="bookmarkCategory" class="ui simple dropdown">
+          <label>Todo category</label>
+          <select v-model="todoCategory" class="ui simple dropdown">
             <option value="">Select a category</option>
-
+            <template v-for="todo in todoCategoryList">
+              <option :value="todo['.key']" :selected="todoCategory === todo['name']? 'selected': ''">{{ todo['name'] }}</option>
+            </template>
           </select>
         </div>
       </form>
-
     </div>
     <div class="actions">
-      <div @click="addBookmark" class="ui inverted purple button">Add</div>
+      <div @click="addTodo" class="ui inverted orange button">Add</div>
     </div>
   </div>
 </template>
 
 <script>
+  import Vue from 'vue'
+  import { db } from '../../firebase'
+
   export default {
-    data () {
+    props: ['postInfo'],
+    firebase: {
+      todoCategoryList: db.ref('todolist/sidebar/')
+    },
+    data: () => {
       return {
-        bookmarkTitle: '',
-        bookmarkUrl: '',
-        bookmarkCategory: ''
+        todoListRef: db.ref('todolist/todo/'),
+        todoTitle: '',
+        todoContents: '',
+        todoCategory: '',
+        todoKey: ''
       }
     },
-
-    props: ['categories'],
-
+    watch: {
+      postInfo: {
+        handler: 'updatePostInfo'
+      }
+    },
     methods: {
-
-      addBookmark () {
-        const newBookmark = {
-          title: this.bookmarkTitle,
-          url: this.bookmarkUrl,
-          category: this.bookmarkCategory
+      addTodo () {
+        if (!this.todoTitle || !this.todoContents || !this.todoCategory) {
+          return alert('Please insert all fileds')
         }
-        store.addBookmark(newBookmark)
-        $('#bookmark-modal').modal('hide')
+        const key = this.todoKey? this.todoKey: this.todoListRef.push().key
+        let updates = {}
+        updates[key] = {
+          title: this.todoTitle,
+          contents: this.todoContents,
+          category: this.todoCategory
+        }
+        this.todoListRef.update(updates)
+
+        this.todoKey = ''
+        this.todoTitle = ''
+        this.todoContents = ''
+        this.todoCategory = ''
+        $('#todo-modal').modal('hide')
+      },
+      updatePostInfo(val) {
+        this.todoKey = val.key
+        this.todoTitle = val.title
+        this.todoContents = val.contents
+        this.todoCategory = val.category
       }
-
-    },
-
-    events: {
-
-      'add-bookmark': function () {
-        this.bookmarkTitle = this.bookmarkUrl = this.bookmarkCategory = ''
-        $('#bookmark-modal').modal('show')
-      }
-
     }
   }
 </script>

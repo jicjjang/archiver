@@ -46,7 +46,7 @@
       addCategory () {
         const key = this.sidebarRef.push().key
         let updates = {}
-        updates[key + '/'] = {
+        updates[key] = {
           color: this.catColor,
           name: this.catName
         }

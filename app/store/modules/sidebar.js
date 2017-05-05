@@ -1,7 +1,11 @@
 import Vue from 'vue'
 
 const state = {
-  category: 'All'
+  category: {
+    key: 'All',
+    color: 'white',
+    name: 'All'
+  }
 }
 
 const getters = {

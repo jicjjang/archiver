@@ -1,5 +1,8 @@
 <template>
   <div id="todo-container">
+    <div class="category">
+      <a :class="`ui empty circular label ${getCategory.color}`"></a><span>{{ getCategory.name }}</span>
+    </div>
     <div class="ul">
       <div class="li" v-for="todo of filteredTodoList" @click="addChoice">
         <div class="icons">
@@ -41,9 +44,8 @@ export default {
       'getCategory'
     ]),
     filteredTodoList() {
-      console.log(this.getCategory)
       return this.todoList.filter((todo) => {
-        return (this.getCategory === 'All' || (this.getCategory === todo.category))? true: false
+        return (this.getCategory.key === 'All' || (this.getCategory.key === todo.category))? true: false
       })
     }
   },

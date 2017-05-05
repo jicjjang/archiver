@@ -9,9 +9,9 @@
     </header>
     <div class="container">
       <ul>
-        <li><a class="ui empty circular label white"></a><span @click="setCategory('All')" class="all">All</span></li>
+        <li><a class="ui empty circular label white"></a><span @click="setCategory({key: 'All', color: 'white', name: 'All'})" class="all">All</span></li>
         <li v-for="sidebar of sidebarList"><a :class="`ui empty circular label ${sidebar['color']}`"></a>
-          <span @click="setCategory(sidebar['.key'])">{{ sidebar['name'] }}</span><i class="remove icon" @click="deleteCategory(sidebar['.key'])"></i></li>
+          <span @click="setCategory({key: sidebar['.key'], color: sidebar['color'], name: sidebar['name']})">{{ sidebar['name'] }}</span><i class="remove icon" @click="deleteCategory(sidebar['.key'])"></i></li>
       </ul>
       <div class="button-area">
         <button @click="showSliderAppendModal" class="ui grey inverted basic icon circular button">
@@ -50,7 +50,14 @@
         $('#cat-modal').modal('show')
       },
       deleteCategory(key) {
-        db.ref('todolist/sidebar/' + key).remove()
+        if (confirm('Are you sure? all posts will be removed!')) {
+          db.ref('todolist/todo/').orderByChild('category').equalTo(key).on('value', function (snapshot) {
+            Object.keys(snapshot.val()).map((v) => {
+              db.ref('todolist/todo/' + v).remove()
+            })
+          })
+          db.ref('todolist/sidebar/' + key).remove()
+        }
       }
     },
     created() {

@@ -1,0 +1,253 @@
+@import './fonts';
+@import './modal';
+
+.lato {
+  font-family: 'Lato Light', sans-serif;
+  font-weight: 300;
+}
+
+.dotdotdot {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.opacity {
+  -webkit-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out;
+}
+
+.width {
+  -webkit-transition: width .25s ease-in-out;
+  transition: width .25s ease-in-out;
+}
+
+.height {
+  -webkit-transition: height .25s ease-in-out;
+  transition: height .25s ease-in-out;
+}
+
+.margin {
+  -webkit-transition: margin .25s ease-in-out;
+  transition: margin .25s ease-in-out;
+}
+
+.delay {
+  -webkit-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  height: 100%;
+  max-height: 100%;
+}
+
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.titlebar {
+  width: 100%;
+  height: 20px;
+  -ms-overflow-style: scrollbar;
+  -webkit-app-region:drag;
+}
+
+#sidebar-container {
+  background-color: #EA7A58;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  overflow: hidden;
+  color: #fff;
+  & > header {
+    display: block;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    & > h2 {
+      .lato;
+      display: inline-block;
+      margin: 40px 0 0 48px;
+      font-size: 24px;
+      & > i {
+        font-size: 22px;
+      }
+    }
+    & > .menu {
+      width: 100%;
+      background-color: #EA7A58;
+      & > .item {
+        background-color: rgba(0,0,0,0.1);
+        color: #fff;
+      }
+    }
+  }
+  & > .container {
+    & > ul {
+      width: 250px;
+      max-height: 440px;
+      margin: 15px 0;
+      overflow: scroll;
+      font-size: 16px;
+      & > li {
+        .lato;
+        .opacity;
+        margin: 8px 30px 8px 20px;
+        opacity: 1;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+          & > i {
+            cursor: pointer;
+            opacity: 0.5;
+          }
+        }
+        & > a {
+          margin: 5px 8px 0 0;
+          vertical-align: top;
+        }
+        & > span {
+          .dotdotdot;
+          width: 150px;
+          &.all {
+            margin: 0 0 0 3px;
+          }
+        }
+        & > i {
+          .opacity;
+          float: right;
+          opacity: 0;
+          &:after {
+            content: '';
+            display: block;
+            clear: both;
+          }
+        }
+      }
+    }
+    & > .button-area {
+      width: inherit;
+      text-align: center;
+    }
+  }
+}
+
+#todo-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 250px;
+  width: calc(~'100% - 250px');
+  padding: 30px 0 0 0;
+  background-color: #E4DCCB;
+  & > .ul {
+    max-height: 80%;
+    margin: 0 0 30px 0;
+    padding: 0 40px;
+    overflow-y: scroll;
+    & > .li {
+      .opacity;
+      .height;
+      width: 100%;
+      height: 80px;
+      min-width: 300px;
+      margin: 18px 0;
+      padding: 12px;
+      border: 2px solid #d36e4f;
+      border-radius: 6px;
+      opacity: 1;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+        & > .icons {
+          & > i {
+            cursor: pointer;
+            opacity: 0.5;
+          }
+        }
+      }
+      &.choice {
+        height: 400px;
+        & > .icons {
+          & > .remove {
+            margin: 0 0 0 5px;
+          }
+          & > .write {
+            margin: 0;
+          }
+        }
+        & > .contents {
+          width: 100%;
+          height: 320px;
+          text-overflow: initial;
+          white-space: normal;
+          overflow: scroll;
+        }
+      }
+      & > .icons {
+        float: right;
+        height: 0;
+        margin: 0 10px 0 0;
+        &:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        & > i {
+          .opacity;
+          opacity: 0;
+        }
+        & > .remove {
+          .margin;
+          margin: 18px 0 0 5px;
+        }
+        & > .write {
+          .margin;
+          margin: 18px 0 0 0;
+        }
+      }
+      & > .title {
+        .lato;
+        .dotdotdot;
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        font-size: 25px;
+        color: #2a557f;
+      }
+      & > .contents {
+        .lato;
+        .dotdotdot;
+        .width;
+        .height;
+        width: 30%;
+        height: 20px;
+        margin: 8px 0 0 10px;
+        font-size: 18px;
+        color: #524656;
+      }
+    }
+  }
+  & > .button-area {
+    text-align: center;
+    & > button {
+      box-shadow: none !important;
+      border: 2px solid #d36e4f;
+      & > i {
+        color: #d36e4f;
+      }
+    }
+  }
+}

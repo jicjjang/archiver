@@ -1,5 +1,5 @@
 {
-  "name": "achiever",
+  "name": "archiver",
   "version": "1.0.0",
   "description": "Share saved data in your group.",
   "main": "index.js",
@@ -17,14 +17,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jicjjang/achiever.git"
+    "url": "git+https://github.com/jicjjang/archiver.git"
   },
   "author": "june <jicjjang12@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jicjjang/achiever/issues"
+    "url": "https://github.com/jicjjang/archiver/issues"
   },
-  "homepage": "https://github.com/jicjjang/achiever#readme",
+  "homepage": "https://github.com/jicjjang/archiver#readme",
   "dependencies": {
     "firebase": "^3.9.0",
     "jquery": "^3.2.1",

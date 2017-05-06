@@ -1,14 +1,14 @@
-![Build Status](https://travis-ci.org/jicjjang/achiever.svg?branch=master)
+![Build Status](https://travis-ci.org/jicjjang/archiver.svg?branch=master)
 
-# Achiever
+# Archiver
 Share saved data in your group.
 
-[![Achiever Demo](./static/readme/readme_image.gif)](https://youtu.be/nzAhe7PffbQ)
+[![Archiver Demo](./static/readme/readme_image.gif)](https://youtu.be/nzAhe7PffbQ)
 
 ## Install
 ~~~bash
-$ git clone https://github.com/jicjjang/achiever
-$ cd achiever
+$ git clone https://github.com/jicjjang/archiver
+$ cd archiver
 $ npm install
 ~~~
 

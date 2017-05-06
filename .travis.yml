@@ -4,14 +4,21 @@ node_js:
   - "5"
   - "6"
   - "7"
-install: npm install
+addons:
+  apt:
+    packages:
+      - xvfb
 before_script:
-  - "mkdir dist"
-  - "cd app"
-  - "ln -s ./ex.config.js ./config.js"
-  - "cd .."
-  - "ls -al app"
-  - "pwd"
+  - mkdir dist
+  - cd app
+  - ln -s ./ex.config.js ./config.js
+  - cd ..
+  - ls -al app
+  - pwd
+install:
+  - npm install
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 script: npm run start
 cache:
   directories:

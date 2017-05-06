@@ -6,9 +6,13 @@ node_js:
   - "7"
 install: npm install
 before_script:
+  - "mkdir dist"
   - "cd app"
   - "ln -s ./ex.config.js ./config.js"
   - "cd .."
   - "ls -al app"
   - "pwd"
 script: npm run start
+cache:
+  directories:
+  - node_modules

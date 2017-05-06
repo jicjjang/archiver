@@ -4,7 +4,7 @@
       <h2><i class="list layout icon"></i>TODO LIST</h2>
       <div class="menu">
         <router-link class="item todo" tag="div" :to="`/`">TODO LIST</router-link>
-        <router-link class="item msg" tag="div" :to="`/message`">MESSAGE</router-link>
+        <!-- <router-link class="item msg" tag="div" :to="`/message`>MESSAGE</router-link> -->
       </div>
     </header>
     <div class="container">

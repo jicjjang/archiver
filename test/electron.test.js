@@ -1,35 +1,42 @@
+
 const Application = require('spectron').Application
-const chaiAsPromised = require('chai-as-promised')
 const electron = require('electron-prebuilt')
-const assert = require('assert')
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 
-const app = new Application({
-  path: electron,
-  args: ['./electron.js']
-})
+global.before(function () {
+  chai.should();
+  chai.use(chaiAsPromised);
+});
 
-beforeEach(function () {
-  return app.start().then(function (app) {
-    chaiAsPromised.transferPromiseness = app.transferPromiseness
-    return app
-  })
-})
-
-afterEach(function () {
-  if (app && app.isRunning()) {
-    return app.stop()
-  }
-})
-
-describe("application launch", function () {
-  this.timeout(15000)
-  it("shows an initial window", function () {
-    return app.client.getWindowCount().then(function (count) {
-      assert.equal(count, 1)
-      return app.client.getTitle()
-    }).then(function(title) {
-      assert.equal(title, 'Archiever')
-      return app
+describe('application launch', function () {
+  beforeEach(function () {
+    this.app = new Application({
+      path: electron,
+      args: ['./electron.js']
     })
+    return this.app.start()
+  })
+
+  beforeEach(function () {
+    chaiAsPromised.transferPromiseness = this.app.transferPromiseness
+  })
+
+  afterEach(function () {
+    if (this.app && this.app.isRunning()) {
+      return this.app.stop()
+    }
+  })
+
+  it('opens a window', function () {
+    return this.app.client.waitUntilWindowLoaded()
+      .browserWindow.isMinimized().should.eventually.be.false
+      .browserWindow.isDevToolsOpened().should.eventually.be.false
+      .browserWindow.isVisible().should.eventually.be.true
+      .browserWindow.isFocused().should.eventually.be.true
+      .browserWindow.getBounds().should.eventually.have.property('width').and.be.above(0)
+      .browserWindow.getBounds().should.eventually.have.property('height').and.be.above(0)
+      .getWindowCount().should.eventually.equal(1)
+      .getTitle().should.eventually.equal('Archiver')
   })
 })

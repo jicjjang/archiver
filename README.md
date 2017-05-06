@@ -1,14 +1,14 @@
-![Build Status](https://travis-ci.org/jicjjang/archiever.svg?branch=master)
+![Build Status](https://travis-ci.org/jicjjang/archiver.svg?branch=master)
 
-# Archiever
+# Archiver
 Share saved data in your group.
 
-[![Archiever Demo](./static/readme/readme_image.gif)](https://youtu.be/nzAhe7PffbQ)
+[![Archiver Demo](./static/readme/readme_image.gif)](https://youtu.be/nzAhe7PffbQ)
 
 ## Install
 ~~~bash
-$ git clone https://github.com/jicjjang/archiever
-$ cd archiever
+$ git clone https://github.com/jicjjang/archiver
+$ cd archiver
 $ npm install
 ~~~
 

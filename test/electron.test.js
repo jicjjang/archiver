@@ -10,6 +10,7 @@ global.before(function () {
 });
 
 describe('application launch', function () {
+  this.timeout(15000)
   beforeEach(function () {
     this.app = new Application({
       path: electron,
@@ -29,6 +30,7 @@ describe('application launch', function () {
   })
 
   it('opens a window', function () {
+    this.timeout(15000)
     return this.app.client.waitUntilWindowLoaded()
       .browserWindow.isMinimized().should.eventually.be.false
       .browserWindow.isDevToolsOpened().should.eventually.be.false

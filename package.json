@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack; electron electron.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "keywords": [
     "electron",
@@ -42,14 +42,20 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "css-loader": "^0.28.0",
+    "electron-chromedriver": "^1.6.0",
     "electron-prebuilt": "^1.4.13",
     "jasmine-core": "^2.6.1",
     "karma": "^1.6.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-webpack": "^2.0.3",
+    "mocha": "^3.3.0",
     "phantomjs": "^2.1.7",
+    "selenium-webdriver": "^3.4.0",
+    "spectron": "^3.6.2",
     "vue-hot-reload-api": "^2.1.0",
     "vue-loader": "^12.0.0",
     "vue-template-compiler": "^2.2.6",

@@ -1,21 +1,23 @@
 ![Build Status](https://travis-ci.org/jicjjang/achiever.svg?branch=master)
 
-# achiever
+# Achiever
 Share saved data in your group.
 
-## install
+[![Achiever Demo](./static/readme/readme_image.gif)](https://youtu.be/nzAhe7PffbQ)
 
-1. npm install
-~~~javascript
+## Install
+~~~bash
+$ git clone https://github.com/jicjjang/achiever
+$ cd achiever
 $ npm install
 ~~~
 
-2. Set semantic-ui directory in node_modules.
-
-![alt text](./static/readme/semantic-ui_path.png)
-
-
 ## Usage
-~~~javscript
+~~~bash
 $ npm run start
+~~~
+
+## Test
+~~~bash
+$ npm run test
 ~~~

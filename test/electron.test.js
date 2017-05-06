@@ -28,7 +28,7 @@ describe("application launch", function () {
       assert.equal(count, 1)
       return app.client.getTitle()
     }).then(function(title) {
-      assert.equal(title, 'Achiever')
+      assert.equal(title, 'Archiever')
       return app
     })
   })

@@ -1,19 +1,12 @@
 ![Build Status](https://travis-ci.org/jicjjang/achiever.svg?branch=master)
 
-# achiever
+# Achiever
 Share saved data in your group.
 
-## install
-
-1. npm install
+## Install
 ~~~javascript
 $ npm install
 ~~~
-
-2. Set semantic-ui directory in node_modules.
-
-![alt text](./static/readme/semantic-ui_path.png)
-
 
 ## Usage
 ~~~javscript

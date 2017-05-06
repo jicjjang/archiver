@@ -6,5 +6,7 @@ node_js:
   - "7"
 install: npm install
 before_script:
-  - "ln -s ./app/ex.config.js ./app/config.js"
+  - "pwd"
+  - "ls"
+  - "ln -s ~/achiever/app/ex.config.js ~/achiever/app/config.js"
 script: npm run start

@@ -12,7 +12,7 @@
         </div>
         <div class="field">
           <label>Category color</label>
-          <select v-model="catColor" class="ui simple dropdown">
+          <select v-model="catColor" class="ui selection dropdown">
             <option value="">Select a color</option>
             <option v-for="color in categoryColors"
               :value="color">
@@ -32,10 +32,10 @@
   import { db } from '../../firebase'
 
   export default {
-    props: ["panel"],
+    props: ['panel', 'postPath', 'categoryPath'],
     data () {
       return {
-        sidebarRef: null,
+        categoryRef: null,
         catName: '',
         catColor: '',
         categoryColors: ['red', 'orange', 'yellow', 'olive', 'green',
@@ -44,13 +44,13 @@
     },
     methods: {
       addCategory () {
-        const key = this.sidebarRef.push().key
+        const key = this.categoryRef.push().key
         let updates = {}
         updates[key] = {
           color: this.catColor,
           name: this.catName
         }
-        this.sidebarRef.update(updates)
+        this.categoryRef.update(updates)
 
         this.catColor = ''
         this.catName = ''
@@ -58,11 +58,7 @@
       }
     },
     created() {
-      if (this.panel === 'todo') {
-        this.sidebarRef = db.ref('todolist/sidebar/')
-      } else if (this.panel === 'msg') {
-        this.sidebarRef = db.ref('messagelist/sidebar/')
-      }
+      this.categoryRef = db.ref(this.categoryPath)
     },
     mounted() {
       $('#cat-modal .ui.selection.dropdown').dropdown()

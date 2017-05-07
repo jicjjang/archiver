@@ -40,6 +40,15 @@
   transition-delay: 0.3s;
 }
 
+.each-color {
+  &.todo {
+    background-color: #EA7A58;
+  }
+  &.album {
+    background-color: #524656;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -63,7 +72,7 @@ ul, ol, li {
 }
 
 #sidebar-container {
-  background-color: #EA7A58;
+  .each-color;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -78,16 +87,23 @@ ul, ol, li {
     cursor: pointer;
     & > h2 {
       .lato;
-      display: inline-block;
-      margin: 40px 0 0 48px;
+      display: block;
+      margin: 0 auto;
+      padding: 40px 0 0 0;
       font-size: 24px;
+      &.todo {
+        width: 160px;
+      }
+      &.album {
+        width: 210px;
+      }
       & > i {
         font-size: 22px;
       }
     }
     & > .menu {
+      .each-color;
       width: 100%;
-      background-color: #EA7A58;
       & > .item {
         background-color: rgba(0,0,0,0.1);
         color: #fff;

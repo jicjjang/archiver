@@ -1,20 +1,20 @@
 <template>
   <article id="main-container">
     <app-sidebar
-      :panel="`todo`"
-      :postPath="'todolist/todo/'"
-      :categoryPath="'todolist/sidebar/'"></app-sidebar>
-    <app-todo></app-todo>
+      :panel="`album`"
+      :postPath="'albumlist/album/'"
+      :categoryPath="'albumlist/sidebar/'"></app-sidebar>
+    <app-album></app-album>
   </article>
 </template>
 
 <script>
-import TodoPanel from './TodoPanel.vue'
+import AlbumPanel from './AlbumPanel.vue'
 import SidebarPanel from '../sidebar/SidebarPanel.vue'
 
 export default {
   components: {
-    'appTodo': TodoPanel,
+    'appAlbum': AlbumPanel,
     'appSidebar': SidebarPanel
   }
 }
